@@ -1,24 +1,24 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useRecoilValue, useRecoilState } from "recoil";
-import { categoryState, todoSelector, todoState } from "../atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { Categories, categoryState, todoSelector, todoState } from "../atoms";
 import CreateToDo from "./CreateToDo";
 import ToDo from "./Todo";
 
 const ToDoList = () => {
   const todos = useRecoilValue(todoSelector);
-  const [category, setCategory] = useRecoilState(categoryState);
+  const setCategory = useSetRecoilState(categoryState);
   const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
-    setCategory(event.currentTarget.value);
+    setCategory(event.currentTarget.value as any);
   };
   return (
     <div>
       <h2>To do</h2>
       <hr />
       <select onInput={onInput}>
-        <option value="TODO">To do</option>
-        <option value="DOING">Doing</option>
-        <option value="DONE">Done</option>
+        <option value={Categories.TODO}>To do</option>
+        <option value={Categories.DOING}>Doing</option>
+        <option value={Categories.DONE}>Done</option>
       </select>
       <CreateToDo />
       {todos.map((todo) => (
