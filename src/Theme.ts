@@ -1,7 +1,7 @@
 import { DefaultTheme } from "styled-components";
 
 export const darkTheme: DefaultTheme = {
-  bgColor: "#2d3436",
-  textColor: "#f5f6fa",
-  accentColor: "#55efc4",
+  bgColor: "#c9ddf0",
+  boardColor: "#e8e8e8",
+  cardColor: "#ffffff",
 };
