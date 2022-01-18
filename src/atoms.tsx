@@ -4,6 +4,7 @@ export enum Categories {
   "TODO" = "TODO",
   "DOING" = "DOING",
   "DONE" = "DONE",
+  "DELETED" = "DELETED",
 }
 
 export interface ITodo {
@@ -14,7 +15,7 @@ export interface ITodo {
 
 export const todoState = atom<ITodo[]>({
   key: "todo",
-  default: [],
+  default: JSON.parse(localStorage.getItem("todo") as any) || [],
 });
 export const categoryState = atom<Categories>({
   key: "category",

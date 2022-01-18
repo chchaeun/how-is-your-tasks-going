@@ -1,9 +1,9 @@
-import React from "react";
-import { useSetRecoilState } from "recoil";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import { Categories, ITodo, todoState } from "../atoms";
 
 function ToDo({ text, category, id }: ITodo) {
-  const setTodos = useSetRecoilState(todoState);
+  const [todos, setTodos] = useRecoilState(todoState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
       currentTarget: { name },
@@ -18,24 +18,30 @@ function ToDo({ text, category, id }: ITodo) {
       ];
     });
   };
+  useEffect(() => {
+    localStorage.setItem("todo", JSON.stringify(todos));
+  }, [todos]);
   return (
     <li>
       {text}
-      {category != Categories.TODO && (
+      {category !== Categories.TODO && (
         <button name={Categories.TODO} onClick={onClick}>
           TO DO
         </button>
       )}
-      {category != Categories.DOING && (
+      {category !== Categories.DOING && (
         <button name={Categories.DOING} onClick={onClick}>
           DOING
         </button>
       )}
-      {category != Categories.DONE && (
+      {category !== Categories.DONE && (
         <button name={Categories.DONE} onClick={onClick}>
           DONE
         </button>
       )}
+      <button name={Categories.DELETED} onClick={onClick}>
+        DELETE
+      </button>
     </li>
   );
 }
