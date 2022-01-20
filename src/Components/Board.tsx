@@ -1,13 +1,15 @@
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import { ITodo } from "../atoms";
 import DraggableCard from "./DraggableCard";
 const Wrapper = styled.div`
-  padding: 20px 10px;
   padding-top: 10px;
   background-color: ${(props) => props.theme.boardColor};
   border-radius: 5px;
   min-height: 300px;
+  display: flex;
+  flex-direction: column;
 `;
 const Title = styled.h2`
   text-align: center;
@@ -16,21 +18,48 @@ const Title = styled.h2`
   font-size: 18px;
 `;
 interface IBoard {
-  droppableId: string;
-  todos: string[];
+  boardId: string;
+  todos: ITodo[];
 }
-function Board({ droppableId, todos }: IBoard) {
+interface IAreaProps {
+  isDraggingFromThis: boolean;
+  isDraggingOver: boolean;
+}
+
+const Area = styled.div<IAreaProps>`
+  background-color: ${(props) =>
+    props.isDraggingOver
+      ? "#7C99AC"
+      : props.isDraggingFromThis
+      ? "#b2c1ce"
+      : "transparent"};
+  transition: background-color 0.25s ease-in-out;
+  flex-grow: 1;
+  padding: 20px;
+`;
+
+function Board({ boardId, todos }: IBoard) {
   return (
     <Wrapper>
-      <Title>{droppableId}</Title>
-      <Droppable droppableId={droppableId}>
-        {(magic) => (
-          <div ref={magic.innerRef} {...magic.droppableProps}>
+      <Title>{boardId}</Title>
+      <Droppable droppableId={boardId}>
+        {(magic, snapshot) => (
+          <Area
+            ref={magic.innerRef}
+            {...magic.droppableProps}
+            isDraggingFromThis={Boolean(snapshot.draggingFromThisWith)}
+            isDraggingOver={snapshot.isDraggingOver}
+          >
             {todos.map((todo, idx) => (
-              <DraggableCard key={todo} todo={todo} idx={idx} />
+              <DraggableCard
+                key={todo.id}
+                todoId={todo.id}
+                todoText={todo.text}
+                idx={idx}
+              />
             ))}
             {magic.placeholder}
-          </div>
+          </Area>
         )}
       </Droppable>
     </Wrapper>

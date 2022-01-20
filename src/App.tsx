@@ -6,7 +6,7 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 import styled from "styled-components";
-import { todoState } from "./atoms";
+import { ITodo, todoState } from "./atoms";
 import { useRecoilState } from "recoil";
 import DraggableCard from "./Components/DraggableCard";
 import Board from "./Components/Board";
