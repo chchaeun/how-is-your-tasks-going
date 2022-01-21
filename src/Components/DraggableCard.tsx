@@ -13,7 +13,7 @@ const Card = styled.div<{ isDragging: Boolean }>`
 `;
 
 interface IDraggableCard {
-  todoId: string;
+  todoId: number;
   todoText: string;
   idx: number;
 }

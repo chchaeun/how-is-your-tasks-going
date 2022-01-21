@@ -31,12 +31,14 @@ function App() {
   const [todos, setTodos] = useRecoilState(todoState);
   const onDragEnd = (info: DropResult) => {
     const { destination, source, draggableId } = info;
+    console.log(info);
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
       setTodos((Boards) => {
         const boardCopy = [...Boards[source.droppableId]];
+        const ObjectCopy = boardCopy[source.index];
         boardCopy.splice(source.index, 1);
-        boardCopy.splice(destination?.index, 0, draggableId);
+        boardCopy.splice(destination?.index, 0, ObjectCopy);
         return {
           ...Boards,
           [source.droppableId]: boardCopy,
@@ -46,8 +48,10 @@ function App() {
       setTodos((Boards) => {
         const sourceCopy = [...Boards[source.droppableId]];
         const destCopy = [...Boards[destination.droppableId]];
+        const ObjectCopy = sourceCopy[source.index];
+
         sourceCopy.splice(source.index, 1);
-        destCopy.splice(destination?.index, 0, draggableId);
+        destCopy.splice(destination?.index, 0, ObjectCopy);
         return {
           ...Boards,
           [source.droppableId]: sourceCopy,
@@ -60,8 +64,8 @@ function App() {
     <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
         <Boards>
-          {Object.keys(todos).map((key) => (
-            <Board key={key} droppableId={key} todos={todos[key]} />
+          {Object.keys(todos).map((boardId) => (
+            <Board key={boardId} boardId={boardId} todos={todos[boardId]} />
           ))}
         </Boards>
       </Wrapper>

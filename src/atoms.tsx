@@ -1,7 +1,7 @@
 import { atom, selector } from "recoil";
 
 export interface ITodo {
-  id: string;
+  id: number;
   text: string;
 }
 
