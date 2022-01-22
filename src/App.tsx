@@ -10,14 +10,17 @@ import { ITodo, todoState } from "./atoms";
 import { useRecoilState } from "recoil";
 import DraggableCard from "./Components/DraggableCard";
 import Board from "./Components/Board";
-const Wrapper = styled.div`
+import TrashCan from "./Components/TrashCan";
+import { useForm } from "react-hook-form";
+import CreateBoard from "./Components/CreateBoard";
+export const Wrapper = styled.div`
   display: flex;
   max-width: 640px;
   width: 100%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
 `;
 
 const Boards = styled.div`
@@ -25,15 +28,26 @@ const Boards = styled.div`
   width: 100%;
   gap: 10px;
   grid-template-columns: repeat(3, 1fr);
+  margin: 20px 0px;
 `;
 
 function App() {
   const [todos, setTodos] = useRecoilState(todoState);
+
   const onDragEnd = (info: DropResult) => {
     const { destination, source, draggableId } = info;
     console.log(info);
     if (!destination) return;
-    if (destination?.droppableId === source.droppableId) {
+    if (destination?.droppableId === "trash") {
+      setTodos((Boards) => {
+        const boardCopy = [...Boards[source.droppableId]];
+        boardCopy.splice(source.index, 1);
+        return {
+          ...Boards,
+          [source.droppableId]: boardCopy,
+        };
+      });
+    } else if (destination?.droppableId === source.droppableId) {
       setTodos((Boards) => {
         const boardCopy = [...Boards[source.droppableId]];
         const ObjectCopy = boardCopy[source.index];
@@ -62,6 +76,7 @@ function App() {
   };
   return (
     <DragDropContext onDragEnd={onDragEnd}>
+      <CreateBoard />
       <Wrapper>
         <Boards>
           {Object.keys(todos).map((boardId) => (
@@ -69,6 +84,7 @@ function App() {
           ))}
         </Boards>
       </Wrapper>
+      <TrashCan />
     </DragDropContext>
   );
 }

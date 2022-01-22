@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { ITodo, todoState } from "../atoms";
 import DraggableCard from "./DraggableCard";
 import { useSetRecoilState } from "recoil";
-const Wrapper = styled.div`
+export const Container = styled.div`
   padding-top: 10px;
   background-color: ${(props) => props.theme.boardColor};
   border-radius: 5px;
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Title = styled.h2`
+export const Title = styled.h2`
   text-align: center;
   font-weight: 600;
   margin-bottom: 10px;
@@ -25,7 +25,7 @@ interface IAreaProps {
   isDraggingOver: boolean;
 }
 
-const Area = styled.div<IAreaProps>`
+export const Area = styled.div<IAreaProps>`
   background-color: ${(props) =>
     props.isDraggingOver
       ? "#7C99AC"
@@ -67,7 +67,7 @@ function Board({ boardId, todos }: IBoard) {
     setValue("todo", "");
   };
   return (
-    <Wrapper>
+    <Container>
       <Title>{boardId}</Title>
       <Form onSubmit={handleSubmit(onValid)}>
         <input
@@ -96,7 +96,7 @@ function Board({ boardId, todos }: IBoard) {
           </Area>
         )}
       </Droppable>
-    </Wrapper>
+    </Container>
   );
 }
 
