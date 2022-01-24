@@ -7,6 +7,8 @@ import { RecoilRoot } from "recoil";
 import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;800&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -38,6 +40,7 @@ footer, header, hgroup, main, menu, nav, section {
 }
 body {
 	line-height: 1;
+
 }
 menu, ol, ul {
 	list-style: none;
@@ -55,8 +58,8 @@ table {
 	border-spacing: 0;
 }
 body{
-  font-family: 'Nanum Gothic', sans-serif;
-  background-color: ${(props) => props.theme.bgColor};
+  font-family: 'Quicksand', sans-serif;
+
   color: black;
   box-sizing: border-box;
 }

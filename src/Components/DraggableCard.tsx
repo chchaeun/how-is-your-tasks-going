@@ -6,7 +6,7 @@ const Card = styled.div<{ isDragging: Boolean }>`
   margin-bottom: 5px;
   padding: 10px 10px;
   background-color: ${(props) =>
-    props.isDragging ? "#D3DEDC" : props.theme.cardColor};
+    props.isDragging ? "#FBE5E5" : props.theme.cardColor};
   box-shadow: ${(props) =>
     props.isDragging ? "0px 2px 5px rgba(0, 0, 0, 0.2)" : "none"};
   transition: background-color 0.3s ease-in-out;
