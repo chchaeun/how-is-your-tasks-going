@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { FieldError, useForm } from "react-hook-form";
 import { boardState, todoState } from "../atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
@@ -50,10 +50,19 @@ function CreateBoard() {
     setBoards((prev) => [...prev, nboard]);
     setValue("nboard", "");
   };
+  const onInvalid = ({ nboard }: any) => {
+    alert(nboard.message);
+  };
   return (
-    <BoardForm onSubmit={handleSubmit(onValid)}>
+    <BoardForm onSubmit={handleSubmit(onValid, onInvalid)}>
       <input
-        {...register("nboard", { required: "New Board is required" })}
+        {...register("nboard", {
+          required: "New Board is required.",
+          maxLength: {
+            value: 15,
+            message: "The maximum length is 15.",
+          },
+        })}
         type="text"
         placeholder="New Board"
       />
