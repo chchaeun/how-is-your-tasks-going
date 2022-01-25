@@ -31,7 +31,7 @@ export const Title = styled.h2`
   font-size: 18px;
   button {
     position: relative;
-    left: 20%;
+    left: 10%;
     background: none;
     border: none;
     cursor: pointer;
