@@ -48,8 +48,8 @@ const Background = styled.div`
   height: 100vh;
   position: fixed;
   background-image: url(${BackgroundImg});
+  background-size: cover;
   opacity: 0.5;
-  background-size: 100%;
   z-index: -10;
 `;
 function App() {
