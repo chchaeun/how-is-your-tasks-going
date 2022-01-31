@@ -6,11 +6,11 @@ function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
         <Route path="/old-version">
           <ToDoList />
+        </Route>
+        <Route path="/">
+          <Home />
         </Route>
       </Switch>
     </BrowserRouter>
