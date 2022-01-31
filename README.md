@@ -2,7 +2,7 @@
 
 ## Link
 
-- [HYTG](https://chchaeun.github.io/how-is-your-tasks-going/index.html)
+- [HYTG](https://chchaeun.github.io/how-is-your-tasks-going)
 
 ## Using
 
