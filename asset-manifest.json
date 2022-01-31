@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/how-is-your-tasks-going/static/js/main.88f3bf55.js",
+    "static/media/background.jpg": "/how-is-your-tasks-going/static/media/background.d038327767f0e42729d9.jpg",
+    "static/media/dragging.png": "/how-is-your-tasks-going/static/media/dragging.274419bc2aac7a97fec5.png",
+    "static/media/title.png": "/how-is-your-tasks-going/static/media/title.e66c5de0bc808388b42a.png",
+    "static/media/undragging.png": "/how-is-your-tasks-going/static/media/undragging.a05ce2fa9d382c59ea4f.png",
+    "index.html": "/how-is-your-tasks-going/index.html",
+    "main.88f3bf55.js.map": "/how-is-your-tasks-going/static/js/main.88f3bf55.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.88f3bf55.js"
+  ]
+}
