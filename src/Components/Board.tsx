@@ -11,56 +11,7 @@ import { boardState, ITodo, todoState } from "../atoms";
 import DraggableCard from "./DraggableCard";
 import { useSetRecoilState } from "recoil";
 import { MdDelete } from "react-icons/md";
-
-export const Container = styled.div`
-  width: 300px;
-  padding: 10px 0px;
-  padding-bottom: 0;
-  background-color: ${(props) => props.theme.boardColor};
-  border-radius: 5px;
-  min-height: 350px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  margin-right: 15px;
-`;
-export const Title = styled.h2`
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 10px;
-  font-size: 18px;
-  button {
-    position: relative;
-    left: 10%;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0px;
-    svg {
-      position: relative;
-      padding: 0px;
-      left: 10px;
-      top: 4px;
-    }
-  }
-`;
-
-interface IAreaProps {
-  isDraggingFromThis: boolean;
-  isDraggingOver: boolean;
-}
-
-export const Area = styled.div<IAreaProps>`
-  background-color: ${(props) =>
-    props.isDraggingOver
-      ? "#ffa3a3"
-      : props.isDraggingFromThis
-      ? "#ffecec"
-      : "transparent"};
-  transition: background-color 0.25s ease-in-out;
-  flex-grow: 1;
-  padding: 20px;
-`;
+import { Area, Container, Title } from "../Elements";
 
 interface IForm {
   todo: string;

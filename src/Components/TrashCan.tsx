@@ -1,7 +1,7 @@
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import styled, { keyframes } from "styled-components";
-import { Area, Title } from "./Board";
+import { Area, Title } from "../Elements";
 import Dragging from "../image/dragging.png";
 import Undragging from "../image/undragging.png";
 const TrashWrapper = styled.div`

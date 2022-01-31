@@ -3,7 +3,6 @@ import { FieldError, useForm } from "react-hook-form";
 import { boardState, todoState } from "../atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { Wrapper } from "../App";
 
 interface IBoardForm {
   nboard: string;
